@@ -27,7 +27,7 @@ Supuestos en los que se basa en módelo:
 
 Supuesto 1: La temperatura del servidor es aproximará mediante un modelo de Regresión lineal múltiple, mediante una función lineal de la temperatura atmosférica, el número de usuarios y la velocidad de transmisión de datos.
 
-Ejemplo: temp. servidor = temp. atmosf. + 1.25xn.de usuarios + 1.25xratio de trans. de datos
+Ejemplo: temp. servidor = temp. atmosf. + 1.25xno.de usuarios + 1.25xratio de trans. de datos
 
 Supuesto 2: La energía gastada por un sistema (nuestra IA o el sistema de enfriamiento integrado del servidor) que cambia la temperatura del servidor de T(t) a T(t+1) en 1 unidad de tiempo (1 min), se puede aproximar mediante regresión a través de una función lineal del cambio absoluto de temperatura del servidor(al sistema le cuesta lo mismo calentar y enfriar).
 
