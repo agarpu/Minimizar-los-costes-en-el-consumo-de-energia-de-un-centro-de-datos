@@ -27,6 +27,7 @@ class Environment(object):
         
     # Crear un método que actualice justo después de que la ia ejecute una acción
     
+    
     # Crear un método que reinicie el entorno
     
     # Crear un método que nos de en cualquier instante el estado actual, la última recompensa y el game over
