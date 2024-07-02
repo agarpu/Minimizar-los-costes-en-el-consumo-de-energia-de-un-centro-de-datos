@@ -1,4 +1,4 @@
-# Minimizar-los-costes-en-el-consumo-de-energia-de-un-centro-de-datos
+# Minimizar-los-costes-en-el-consumo-de-energía-de-un-centro-de-datos
 Deep Q-Learning
 
 Se desarrollarán dos sistemas:
