@@ -1,4 +1,4 @@
-# Minimizar-los-costes-en-el-consumo-de-energía-de-un-centro-de-datos
+## CASO PRÁCTICO: MINIMIZAR LOS COSTES DEL CONSUMO ENERGÉTICO DE UN SERVIDOR EN UN CENTRO DE DATOS
 Deep Q-Learning
 
 Se desarrollarán dos sistemas:
