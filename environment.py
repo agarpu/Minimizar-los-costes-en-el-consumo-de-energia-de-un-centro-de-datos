@@ -60,13 +60,13 @@ class Environment(object):
         
         #actualizar el número de usuarios
         self.current_number_users += np.random.randint(-self.max_number_users,self.max_number_users)
-        if(self.current_number_users>self.min_number_users):
+        if(self.current_number_users<self.min_number_users):
             self.current_number_users=self.min_number_users
         elif(self.current_number_users>self.max_number_users)
             self.current_number_users=self.max_number_users
         #actualizar la tasa de transferencia
         self.current_rate_data += np.random.randint(-self.max_number_rate,self.max_number_rate)
-        if(self.current_rate_data>self.min_rate_data):
+        if(self.current_rate_data<self.min_rate_data):
             self.current_rate_data=self.min_rate_data
         elif(self.current_rate_data>self.max_rate_data)
             self.current_rate_data=self.max_rate_data
@@ -87,8 +87,24 @@ class Environment(object):
         #calcular la nueva temperatura del server cuando no hay IA
         self.temperature_no_ai += delta_intrinsec_temperature
 
-        #OBTENCION DEL GAMEOVER
-    
-    # Crear un método que reinicie el entorno
-    
-    # Crear un método que nos de en cualquier instante el estado actual, la última recompensa y el game over
+        #OBTENCION DEL GAME_OVER
+        if(self.temperature_ai<self.min_temperature):
+            if(self.train==1):
+                self.game_over=1
+            else:
+                self.total_energy_ai += self.optimal_temperature[0]-self.temperature_ai
+                self.temperature_ai=self.optimal_temperature[0]
+        if(self.temperature_ai>self.max_temperature)
+            if(self.train==1):
+                self.game_over=1
+            else:
+                self.total_energy_ai += self.temperature_ai-self.optimal_temperature[1]
+                self.temperature_ai=self.optimal_temperature[1]
+
+        # ACTUALIZAR LOS SCORES
+
+        #  Calcular la energía total gastada por la IA
+
+
+        # DEVOLVER EL SIGUIENTE ESTADO, RECOMPENSA Y GAME OVER
+
