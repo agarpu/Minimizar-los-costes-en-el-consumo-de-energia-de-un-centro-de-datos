@@ -25,7 +25,7 @@ class Environment(object):
         self.current_rate_data=initial_rate_data
         self.intrinsec_temperature=self.atmospheric_temperature + 1.25*self.current_number_users + 1.25*self.current_rate_data
         self.temperature_ai=self.intrinsec_temperature
-        self.temperature_no_ai=(self.optimal_temperature[0] + self.optimal_temperature[1])/2.0
+        self.temperature_no_ai=(self.optimal_temperature[0] + self.optimal_temperature[1])/2.0 #temperatura del servidor
         self.total_energy_ai=0.0
         self.total_energy_no_ai=0.0
         self.reward=0.0
@@ -33,11 +33,17 @@ class Environment(object):
         self.train=1 #modo entrenamiento=1 #modo simulación=0
         
     # Crear un método que actualice justo después de que la ia ejecute una acción
+    #direction =1 si calienta el server; direction=-1 si se enfria el server
+    #energy_ai= energia que ha necesitado para enfriar o calentar el server
+
     def update_env(self, direction, energy_ai, month):
         #OBTENCIÓN DE LA RECOMPENSA
 
         #calcular la energia gastada por el sistema de refrigeración del server sin AI.
+        energy_no_ai = 0
 
+        if (self.temperature_no_ai<self.optimal_temperature[0]):
+            energy_no_ai=self.optimal_temperature[0]-self.temperature_no_ai
         #calcular la recompensa
 
         #escalar la recompensa
