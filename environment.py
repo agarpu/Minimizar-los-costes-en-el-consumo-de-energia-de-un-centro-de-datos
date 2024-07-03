@@ -38,7 +38,6 @@ class Environment(object):
 
     def update_env(self, direction, energy_ai, month):
         #OBTENCIÓN DE LA RECOMPENSA
-
         # Calcular la energía gastada por el sistema de refrigeración del server sin AI.
         energy_no_ai = 0
 
@@ -55,9 +54,38 @@ class Environment(object):
         # Escalar la recompensa
         self.reward = 1e-3*self.reward
 
-        #OBTENCION DEL SIGUIENTE ESTADO
-        
+        #OBTENCIÓN DEL SIGUIENTE ESTADO
         # actualizar la temperatura atmosferica
+        self.atmospheric_temperature=self.monthly_atmospheric_temperature[month]
+        
+        #actualizar el número de usuarios
+        self.current_number_users += np.random.randint(-self.max_number_users,self.max_number_users)
+        if(self.current_number_users>self.min_number_users):
+            self.current_number_users=self.min_number_users
+        elif(self.current_number_users>self.max_number_users)
+            self.current_number_users=self.max_number_users
+        #actualizar la tasa de transferencia
+        self.current_rate_data += np.random.randint(-self.max_number_rate,self.max_number_rate)
+        if(self.current_rate_data>self.min_rate_data):
+            self.current_rate_data=self.min_rate_data
+        elif(self.current_rate_data>self.max_rate_data)
+            self.current_rate_data=self.max_rate_data
+        # Actualizar la variación de temperatura intrínseca
+        past_intrinsic_temperature= self.intrinsec_temperature
+        self.intrinsec_temperature=self.atmospheric_temperature + 1.25*self.current_number_users + 1.25*self.current_rate_data
+        delta_intrinsec_temperature=self.intrinsec_temperature-past_intrinsic_temperature
+
+        # Calcular la variación de temperatura causada por la IA
+        if(direction==-1):
+            delta_temperature_ai = -energy_ai
+        elif(direction==1):
+            delta_temperature_ai=energy_ai
+
+        #calcular la nueva temperatura del server cuando hay IA
+        self.temperature_ai += delta_intrinsec_temperature+delta_temperature_ai
+
+        #calcular la nueva temperatura del server cuando no hay IA
+        self.temperature_no_ai += delta_intrinsec_temperature
 
         #OBTENCION DEL GAMEOVER
     
