@@ -2,7 +2,7 @@
 Deep Q-Learning
 
 Se desarrollarán dos sistemas:
-- Uno con IA y otro sin IA, por tanto, se van a calcular en paralelo dos simulaciones para ver las diferencias para poder comparar con el número de ususarios entrante y saliente, y teniendo en cuenta las variaciones de transmisión.
+- Uno con IA y otro sin IA, por tanto, se van a calcular en paralelo dos simulaciones para ver las diferencias para poder comparar con el número de usuarios entrante y saliente, y teniendo en cuenta las variaciones de transmisión.
   
 Entorno del supuesto:
 - El rango óptimo de temperaturas del server variará entre 18 y 24 grados.
