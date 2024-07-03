@@ -32,24 +32,31 @@ class Environment(object):
         self.game_over=0 #será 1 cuando termine 
         self.train=1 #modo entrenamiento=1 #modo simulación=0
         
-    # Crear un método que actualice justo después de que la ia ejecute una acción
+    # Crear un método que actualice justo después de que la IA ejecute una acción
     #direction =1 si calienta el server; direction=-1 si se enfria el server
     #energy_ai= energia que ha necesitado para enfriar o calentar el server
 
     def update_env(self, direction, energy_ai, month):
         #OBTENCIÓN DE LA RECOMPENSA
 
-        #calcular la energia gastada por el sistema de refrigeración del server sin AI.
+        # Calcular la energía gastada por el sistema de refrigeración del server sin AI.
         energy_no_ai = 0
 
         if (self.temperature_no_ai<self.optimal_temperature[0]):
             energy_no_ai=self.optimal_temperature[0]-self.temperature_no_ai
-        #calcular la recompensa
+            self.temperature_no_ai=self.optimal_temperature[0]
+        elif(self.temperature_no_ai>self.optimal_temperature[1])
+            energy_no_ai=self.temperature_no_ai-self.optimal_temperature[1]
+            self.temperature_no_ai=self.optimal_temperature[1]
 
-        #escalar la recompensa
+        # Calcular la recompensa
+        self.reward = energy_no_ai - energy_ai
+
+        # Escalar la recompensa
+        self.reward = 1e-3*self.reward
 
         #OBTENCION DEL SIGUIENTE ESTADO
-
+        
         # actualizar la temperatura atmosferica
 
         #OBTENCION DEL GAMEOVER

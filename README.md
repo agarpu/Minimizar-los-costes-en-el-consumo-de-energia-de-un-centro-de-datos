@@ -23,6 +23,9 @@ Variables:
 - Energía gastada por la IA en el servidor (para enfriar o calentar) en cualquier momento
 - Energía gastada por el sistema por el sistema de refrigeración que lleva al servidor a trabajar en su rango óptimo cada vez que la temperatura del servidor sale del rango óptimo.
 
+Cálculo de la recompensa de nuestra IA:
+- Reward(t)=Energía ahorrada por la IA entre t y t+1 = E_no_ai(t)-E_ai(t)
+
 Supuestos en los que se basa en módelo:
 
 Supuesto 1: La temperatura del servidor es aproximará mediante un modelo de Regresión lineal múltiple, mediante una función lineal de la temperatura atmosférica, el número de usuarios y la velocidad de transmisión de datos.
@@ -34,5 +37,5 @@ Supuesto 2: La energía gastada por un sistema (nuestra IA o el sistema de enfri
 Energía (t) = |T(t+1)-T(t)|
 
 T(t+1)-T(t) si T(t+1)>T(t), es decir, si el servidor se calienta
-T(t)-T(t+1) si T(t+1)<T(t), es decir, si el servidor se enfria
+T(t)-T(t+1) si T(t+1)< T(t), es decir, si el servidor se enfria
 
